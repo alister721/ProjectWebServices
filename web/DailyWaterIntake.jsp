@@ -151,6 +151,16 @@
     <% if (result != null) { %>
             <h2>Required Daily Water Intake</h2>
             <p><%= result %></p>
+            <hr style="margin: 20px 0;">
+            <p> 💡 <strong>Benefits of Drinking Water</strong></p>
+            <ul>
+                <li>Improves Digestive Health</li>
+                <li>Maintains Healthy Body Weight</li>
+                <li>Boosts Energy Levels</li>
+                <li>Balances Body Fluids</li>
+                <li>Keeps Skin Healthy</li>
+                <li>Improves Brain Function</li>
+            </ul>
         </div>
     <% } %>
 </div>
