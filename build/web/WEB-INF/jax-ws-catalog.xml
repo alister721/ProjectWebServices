@@ -2,4 +2,5 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/ProjectWebServices/HealthModule?wsdl" uri="wsdl/localhost_8080/ProjectWebServices/HealthModule.wsdl"/>
     <system systemId="http://localhost:8080/ProjectWebServices/HealthModule?xsd=1" uri="wsdl/localhost_8080/ProjectWebServices/HealthModule.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ProjectWebServices/HealthModule?WSDL" uri="wsdl/localhost_8080/ProjectWebServices/HealthModule.wsdl"/>
 </catalog>

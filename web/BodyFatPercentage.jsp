@@ -1,0 +1,176 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@ page import="com.client.HealthModule" %>
+<%@ page import="com.client.HealthModule_Service" %>
+
+<%
+    HttpSession sess = request.getSession();
+
+    String gender = (String) sess.getAttribute("gender");
+    Long idLong = (Long) sess.getAttribute("id");
+    Float weight = (Float) sess.getAttribute("weight");
+    Float height = (Float) sess.getAttribute("height");
+    Integer age = (Integer) sess.getAttribute("age");
+    String name = (String) sess.getAttribute("name");
+    Float bmi = (Float) sess.getAttribute("bmi");
+
+
+    String genderParam = request.getParameter("gender");
+    String ageParam = request.getParameter("age");
+    String bmiParam = request.getParameter("bmi");
+
+    String result = null;
+
+    if ("POST".equalsIgnoreCase(request.getMethod())) {
+        try {
+            gender = genderParam;
+            age = Integer.parseInt(ageParam);
+            bmi = Float.parseFloat(bmiParam);
+
+            // Update session
+            sess.setAttribute("gender", gender);
+            sess.setAttribute("age", age);
+
+            HealthModule_Service service = new HealthModule_Service();
+            HealthModule port = service.getHealthModulePort();
+            result = port.calculateBodyFat(gender, age, bmi);
+        } catch (Exception e) {
+            result = "<bodyFat>Invalid input</bodyFat>";
+        }
+    }
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Body Fat Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f8ff;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .result {
+            margin-top: 25px;
+            background: #e8f8f5;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            border-radius: 6px;
+        }
+
+        .info p {
+            margin: 5px 0;
+        }
+
+        .bmi-helper {
+            margin-left: 8px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .result {
+            margin-top: 25px;
+            background: #e8f8f5;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Body Fat Percentage</h1>
+
+    <form method="post">
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender" required>
+            <option value="male" <%= "male".equalsIgnoreCase(gender) ? "selected" : "" %>>Male</option>
+            <option value="female" <%= "female".equalsIgnoreCase(gender) ? "selected" : "" %>>Female</option>
+        </select>
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" value="<%= age != null ? age : "" %>" required>
+
+        <label for="bmi">BMI: 
+            <% if (bmi == null) { %>
+                <a href="bmi.jsp" class="bmi-helper" title="Go to BMI Calculator">-> Calculate my BMI</a>
+            <% } %>
+        </label>
+        <input type="number" step="0.01" name="bmi" id="bmi" value="<%= bmi != null ? bmi : "" %>" required>
+
+        <button type="submit" class="btn">Calculate Body Fat</button>
+    </form>
+
+    <div class="result">
+        <h2>Your Information</h2>
+        <p><strong>Name:</strong> <%= name != null ? name : "Not set" %></p>
+        <p><strong>ID:</strong> <%= idLong != null ? idLong : "Not set" %></p>
+        <p><strong>Gender:</strong> <%= gender %></p>
+        <p><strong>Weight:</strong> <%= weight %> kg</p>
+        <p><strong>Height:</strong> <%= height %> cm</p>
+        <p><strong>Age:</strong> <%= age %></p>
+        <p><strong>BMI:</strong> <%= bmi != null ? String.format("%.2f", bmi) : "N/A" %></p>
+        
+        <hr style="margin: 20px 0;">
+
+    <% if (result != null && result.contains("<bodyFat>")) {
+        String bodyFatValue = result.replaceAll(".*<bodyFat>(.*?)</bodyFat>.*", "$1");
+        String category = result.replaceAll(".*<category>(.*?)</category>.*", "$1");
+        String tip = result.replaceAll(".*<tip>(.*?)</tip>.*", "$1");
+    %>
+
+        <h2>Your Body Fat Analysis</h2>
+        <p><strong>Body Fat %:</strong> <%= bodyFatValue %> %</p>
+        <p><strong>Category:</strong> <%= category %></p>
+        <p>💡 <strong>Health Tip:</strong> <%= tip %></p>
+    </div>
+
+    <% } %>
+</div>
+</body>
+</html>

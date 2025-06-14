@@ -8,6 +8,18 @@
         <servlet-name>ClientOne</servlet-name>
         <servlet-class>com.cal.ClientOne</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClientSide</servlet-name>
+        <servlet-class>com.client.ClientSide</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientServlet</servlet-name>
+        <servlet-class>com.cal.ClientServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Serv</servlet-name>
+        <servlet-class>client.Serv</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Client</servlet-name>
         <url-pattern>/Client</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>ClientOne</servlet-name>
         <url-pattern>/ClientOne</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientSide</servlet-name>
+        <url-pattern>/ClientSide</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientServlet</servlet-name>
+        <url-pattern>/ClientServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Serv</servlet-name>
+        <url-pattern>/Serv</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

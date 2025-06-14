@@ -1,0 +1,46 @@
+/* css/snippet.jspf */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f8ff;
+    margin: 0;
+    padding: 40px;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+.info, .result {
+    margin-top: 20px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-left: 4px solid #3498db;
+    border-radius: 6px;
+}
+form {
+    display: grid;
+    gap: 15px;
+}
+input, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+.btn {
+    background: #3498db;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn:hover {
+    background: #2980b9;
+}
