@@ -3,46 +3,62 @@
 <html>
 <head>
     <title>Health Tools Menu</title>
-    <link rel="stylesheet" href="css/style.css">
     <style>
         body {
+            margin: 0;
+            padding: 60px 20px;
             font-family: 'Segoe UI', sans-serif;
-            background: #e0f7fa;
-            /*margin: 0;*/
-            /*height: 150vh;*/
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: start;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
 
-        .menu-container {
-            margin-top: 2vh !important;
-            /*margin-bottom: 20vh !important;*/
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 500px;
-        }
+
+    .menu-container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 50px 40px;
+        border-radius: 20px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+        animation: fadeIn 0.9s ease-in-out;
+        margin: 0; 
+    }
 
         h2 {
-            margin-top: 0;
             color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .welcome {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
         }
 
         ul {
             list-style: none;
             padding: 0;
-            margin: 30px 0;
+            margin: 0;
         }
 
         li {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             background: #f9f9f9;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            padding: 18px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
         }
 
         a {
@@ -51,10 +67,11 @@
             font-weight: bold;
             color: #3498db;
             text-decoration: none;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         a:hover {
+            color: #21618c;
             text-decoration: underline;
         }
 
@@ -63,9 +80,15 @@
             color: #555;
         }
 
-        .welcome {
-            font-size: 18px;
-            color: #555;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>

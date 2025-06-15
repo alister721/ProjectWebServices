@@ -37,72 +37,168 @@
 <html>
 <head>
     <title>Calories Burn Rate Calculator</title>
-    <style>
-        <%@ include file="css/styling.css" %>
+<style>
+    body {
+        margin: 0;
+        padding: 60px 20px;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        box-sizing: border-box;
+    }
 
-        .layout {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    .container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 50px 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 750px;
+        animation: fadeIn 1s ease-in-out;
+    }
 
-        .result {
-            margin-top: 20px;
-            background-color: #eaf4f8;
-            border-left: 5px solid #007BFF;
-            padding: 15px;
-            border-radius: 8px;
-        }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
 
-        .btn {
-            margin-top: 10px;
-        }
+    .layout {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
 
-        .reference {
-            margin-top: 40px;
-            background-color: #f8f9fa;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            font-size: 14px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-        .reference h3 {
-            margin-top: 0;
-            color: #2c3e50;
-            font-size: 18px;
-        }
+    label {
+        font-weight: 600;
+        color: #34495e;
+    }
 
-        .reference table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    input, select {
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: #fdfdfd;
+        box-sizing: border-box;
+    }
 
-        .reference th,
-        .reference td {
-            border-bottom: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
+    .btn {
+        margin-top: 10px;
+        background: #3498db;
+        color: white;
+        padding: 14px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-        a[title]:hover {
-            color: #007BFF;
-            cursor: pointer;
-        }
+    .btn:hover {
+        background-color: #2980b9;
+    }
 
-        #metTable {
-            scroll-margin-top: 100px;
-        }
+    .result {
+        margin-top: 30px;
+        padding: 25px;
+        background-color: #f1fbff;
+        border-left: 6px solid #3498db;
+        border-radius: 10px;
+        animation: fadeIn 0.8s ease-in-out;
+    }
 
-        html {
-            scroll-behavior: smooth;
+    .result h2 {
+        color: #2d3436;
+        margin-bottom: 15px;
+    }
+
+    .result p {
+        margin: 8px 0;
+        color: #333;
+        line-height: 1.5;
+    }
+
+    .reference {
+        margin-top: 40px;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .reference h3 {
+        margin-top: 0;
+        color: #2c3e50;
+        font-size: 18px;
+    }
+
+    .reference table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .reference th,
+    .reference td {
+        border-bottom: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    a[title]:hover {
+        color: #007BFF;
+        cursor: pointer;
+    }
+
+    #metTable {
+        scroll-margin-top: 100px;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #3498db;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s ease;
+    }
+
+    .back-btn:hover {
+        color: #21618c;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
         }
-    </style>
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
 </head>
 <body>
 <div class="container">
+    <a href="menu.jsp" class="back-btn">← Back to Menu</a>
+
     <h1>Calories Burn Rate Calculator</h1>
 
     <div class="layout">

@@ -154,7 +154,11 @@ public class HealthModule {
      * Web service operation
      */
     @WebMethod(operationName = "dailyWaterIntakeCalculator")
-    public String dailyWaterIntakeCalculator(@WebParam(name = "weightKg") double weightKg, @WebParam(name = "heightCm") double heightCm, @WebParam(name = "activityLevel") String activityLevel, @WebParam(name = "climate") String climate) {
+    public String dailyWaterIntakeCalculator(
+            @WebParam(name = "weightKg") double weightKg, 
+            @WebParam(name = "heightCm") double heightCm, 
+            @WebParam(name = "activityLevel") String activityLevel, 
+            @WebParam(name = "climate") String climate) {
          if (weightKg <= 0 || heightCm <= 0) {
             throw new WebServiceException("Invalid input: Weight and height must be > 0.");
         }

@@ -46,84 +46,131 @@
     <meta charset="UTF-8">
     <title>Body Fat Calculator</title>
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #f0f8ff;
-            margin: 0;
-            padding: 40px;
-        }
+body {
+    margin: 0;
+    padding: 60px 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
 
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 650px;
+    animation: fadeIn 1s ease-in-out;
+}
 
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-        }
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
 
-        form {
-            display: grid;
-            gap: 15px;
-        }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
-        label {
-            font-weight: bold;
-        }
+label {
+    font-weight: 600;
+    color: #34495e;
+}
 
-        input, select {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
+input, select {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fdfdfd;
+    box-sizing: border-box;
+}
 
-        .btn {
-            background: #3498db;
-            color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+.btn {
+    margin-top: 10px;
+    background: #3498db;
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-        .btn:hover {
-            background: #2980b9;
-        }
+.btn:hover {
+    background: #2980b9;
+}
 
-        .result {
-            margin-top: 25px;
-            background: #e8f8f5;
-            padding: 15px;
-            border-left: 5px solid #3498db;
-            border-radius: 6px;
-        }
+.result {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #f1fbff;
+    border-left: 6px solid #3498db;
+    border-radius: 10px;
+    animation: fadeIn 0.8s ease-in-out;
+}
 
-        .info p {
-            margin: 5px 0;
-        }
+.result h2 {
+    color: #2d3436;
+    margin-bottom: 15px;
+}
 
-        .bmi-helper {
-            margin-left: 8px;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        
-        .result {
-            margin-top: 25px;
-            background: #e8f8f5;
-            padding: 15px;
-            border-left: 5px solid #3498db;
-            border-radius: 6px;
-        }
+.result p {
+    margin: 8px 0;
+    color: #333;
+    line-height: 1.5;
+}
+
+.bmi-helper {
+    margin-left: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #3498db;
+}
+
+.bmi-helper:hover {
+    text-decoration: underline;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+    color: #21618c;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
     </style>
 </head>
 <body>
 <div class="container">
+    <a href="menu.jsp" class="back-btn">← Back to Menu</a>
+
     <h1>Body Fat Percentage</h1>
 
     <form method="post">
